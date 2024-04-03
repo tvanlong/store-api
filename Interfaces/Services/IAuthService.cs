@@ -9,6 +9,6 @@ namespace storeAPI.Interfaces
     public interface IAuthService
     {
         Task<LoginResponseDTO> Login(LoginDTO loginDto);
-        Task<RegisterResponseDTO> Register(RegisterDTO registerDto);
+        Task<RegisterResponseDTO> Register(RegisterDTO registerDto, string role);
     }
 }

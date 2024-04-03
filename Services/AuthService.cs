@@ -24,13 +24,13 @@ namespace storeAPI.Services
 
         public async Task<LoginResponseDTO> Login(LoginDTO loginDto)
         {
-            var customer = await _userManager.Users.FirstOrDefaultAsync(u => u.UserName == loginDto.UserName.ToLower());
-            if(customer == null)
+            var user = await _userManager.Users.FirstOrDefaultAsync(u => u.UserName == loginDto.UserName.ToLower());
+            if(user == null)
             {
                 return null;
             }
 
-            var result = await _signInManager.CheckPasswordSignInAsync(customer, loginDto.Password, false);
+            var result = await _signInManager.CheckPasswordSignInAsync(user, loginDto.Password, false);
             if(!result.Succeeded)
             {
                 return null;
@@ -38,31 +38,39 @@ namespace storeAPI.Services
 
             return new LoginResponseDTO
             {
-                UserName = customer.UserName,
-                Email = customer.Email,
-                Token = await _tokenService.CreateToken(customer),
-                Role = (await _userManager.GetRolesAsync(customer)).FirstOrDefault()
+                UserName = user.UserName,
+                Email = user.Email,
+                Token = await _tokenService.CreateToken(user),
+                Role = (await _userManager.GetRolesAsync(user)).FirstOrDefault()
             };
         }
 
-        public async Task<RegisterResponseDTO> Register(RegisterDTO registerDto)
+        public async Task<RegisterResponseDTO> Register(RegisterDTO registerDto, string role)
         {
-            var customer = new Customer
+            var user = new User
             {
                 UserName = registerDto.UserName,
                 Email = registerDto.Email
             };
-            var result = await _userManager.CreateAsync(customer, registerDto.Password);
+            var result = await _userManager.CreateAsync(user, registerDto.Password);
             if(!result.Succeeded)
+            {
+                return null;
+            }
+            var roleResult = await _userManager.AddToRoleAsync(user, role);
+            if(!roleResult.Succeeded)
             {
                 return null;
             }
             return new RegisterResponseDTO
             {
-                UserName = customer.UserName,
-                Email = customer.Email,
-                Token = await _tokenService.CreateToken(customer),
+                UserName = user.UserName,
+                Email = user.Email,
+                Token = await _tokenService.CreateToken(user),
+                Role = (await _userManager.GetRolesAsync(user)).FirstOrDefault()
             };
         }
+
+
     }
 }

@@ -95,7 +95,7 @@ namespace storeAPI.Controllers
         //        return StatusCode(500, ex);
         //    }
             
-                var response = await _authService.Register(registerDto);
+                var response = await _authService.Register(registerDto, "Staff");
                 if(response == null)
                 {
                     return StatusCode(500, "Register failed");

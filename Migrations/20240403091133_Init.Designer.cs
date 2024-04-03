@@ -12,8 +12,8 @@ using storeAPI.Data;
 namespace storeAPI.Migrations
 {
     [DbContext(typeof(ApplicationDBContext))]
-    [Migration("20240329140638_290324")]
-    partial class _290324
+    [Migration("20240403091133_Init")]
+    partial class Init
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -58,14 +58,14 @@ namespace storeAPI.Migrations
                         new
                         {
                             Id = 1,
-                            ConcurrencyStamp = "21eb41f6-d8d2-43e8-beb2-dfd11b53ebb8",
+                            ConcurrencyStamp = "1b41f30d-616c-4674-a346-5c94d58a2d36",
                             Name = "Staff",
                             NormalizedName = "STAFF"
                         },
                         new
                         {
                             Id = 2,
-                            ConcurrencyStamp = "30012bd4-74cb-4f74-84eb-472729ec725a",
+                            ConcurrencyStamp = "c78ad2d2-7c78-476b-9b47-f638cb3fd3b3",
                             Name = "Customer",
                             NormalizedName = "CUSTOMER"
                         });

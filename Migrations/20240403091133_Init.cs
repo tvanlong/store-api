@@ -35,7 +35,6 @@ namespace storeAPI.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     FullName = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Password = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Address = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Discriminator = table.Column<string>(type: "nvarchar(8)", maxLength: 8, nullable: false),
                     CartId = table.Column<int>(type: "int", nullable: true),
@@ -347,8 +346,8 @@ namespace storeAPI.Migrations
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
                 values: new object[,]
                 {
-                    { 1, "f8f6f2ba-4399-4034-bb81-6db4f3a0297f", "Staff", "STAFF" },
-                    { 2, "38e1e6ca-cc0e-4cd2-93fa-939a4da2af98", "Customer", "CUSTOMER" }
+                    { 1, "1b41f30d-616c-4674-a346-5c94d58a2d36", "Staff", "STAFF" },
+                    { 2, "c78ad2d2-7c78-476b-9b47-f638cb3fd3b3", "Customer", "CUSTOMER" }
                 });
 
             migrationBuilder.CreateIndex(
