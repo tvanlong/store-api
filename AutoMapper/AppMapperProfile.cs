@@ -19,6 +19,7 @@ namespace storeAPI.AutoMapper
             CreateMap<Version, VersionDTO>().ReverseMap();
             CreateMap<Order, OrderDTO>().ReverseMap();
             CreateMap<OrderDetail, OrderDetailDTO>().ReverseMap();
+            CreateMap<User, UserDTO>().ReverseMap();
        } 
     }
 }

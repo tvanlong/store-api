@@ -6,6 +6,7 @@ using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using storeAPI.Data;
 using storeAPI.Interfaces;
+using storeAPI.Interfaces.Repository;
 using storeAPI.Middleware;
 using storeAPI.Models;
 using storeAPI.Repository;
@@ -91,6 +92,9 @@ builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
 builder.Services.AddScoped<ISubcategoryRepository, SubcategoryRepository>();
 builder.Services.AddScoped<IProductRepository, ProductRepository>();
 builder.Services.AddScoped<IVersionRepository, VersionRepository>();
+builder.Services.AddScoped<IUserRepository, UserRepository>();
+
+// Add Service: sử dụng DI để inject Service vào Controller
 builder.Services.AddScoped<ITokenService, TokenService>();
 builder.Services.AddScoped<IAuthService, AuthService>();
 
